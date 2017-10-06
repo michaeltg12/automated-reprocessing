@@ -1,5 +1,26 @@
 #!/Users/ofg/anaconda3/bin/python
 
+""" ********** module  name **********
+
+Author: Michael Giansiracusa
+Email: giansiracumt@ornl.gov
+
+Purpose:
+
+Note:
+
+Classes:
+
+Methods:
+
+Example:
+
+Attributes:
+
+Todo:
+
+"""
+
 from sympy import sympify, symbol
 from matplotlib import pyplot as plt
 import io_methods
@@ -251,43 +272,6 @@ def do_reprocessing(verified_file, args, io_manager):
 
             io_manager.save_obj(output_struct, out_file)
 
-            #     if re.search('time', equa):
-            #         logger.info('time substitution\n%s from:\n%s\t\tchanged to\n----> %s\n' % (ls, og, rootgrp.variables[ls]))
-            #
-            #     elif pl == 0:
-            #         logger.info('equation counter: %s' % equation_counter)  # for debugging
-            #         plt.figure(equation_counter)  # create figure for debugging
-            #         # plot below for showing replacement change where equation form like: 'base_time = 200'
-            #         plt.title('replacement change (%s)' % equa)
-            #         logger.info('plotting %s = %s' % (ls, rootgrp.variables[ls]))
-            #         plt.plot(rootgrp.variables[ls], 'go', label='new %s' % ls)
-            #         plt.plot(og, 'r.', label='old %s' % ls)
-            #         plt.legend()
-            #
-            #     elif pl == 1:
-            #         logger.info('equation counter: %s' % equation_counter)
-            #         plt.figure(equation_counter)  # create figure for debugging
-            #         # plot below for showing iterative constant change where equation form like 'psp1_mean = psp1_mean + 200'
-            #         plt.title('iterative constant change(%s)' % equa)
-            #         plt.plot(rootgrp.variables[ls][:], 'g-', label='new %s' % ls)
-            #         plt.plot(og, 'r:', label='old %s' % ls)
-            #         plt.legend()
-            #
-            #     elif pl == 2:
-            #         logger.info('equation counter: %s' % equation_counter)
-            #         plt.figure(equation_counter)  # create figure for debugging
-            #         # plot below for showing iterative change where equation form like 'psp1_mean = psp1_sd + 200'
-            #         plt.title('iterative variable change(%s)' % equa)
-            #         plt.plot(rootgrp.variables[ls][:], 'g-', label='new %s' % ls)
-            #         plt.plot(rootgrp.variables[rv[0]][:], 'b:', label='aux var %s' % rv[0])
-            #         plt.plot(og, 'r:', label='old %s' % ls)
-            #         plt.legend()
-            #
-            #     logger.info('\n##### Finished with equ: %s #####\n\n' %(equa))
-            #     equation_counter += 1
-            # logger.info('##### plotting changes #####')
-            # plt.show()  # show plot
-            #
             file_counter += 1
             if file_counter > 2:
                 break
