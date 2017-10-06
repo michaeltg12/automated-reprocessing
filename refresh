@@ -1,0 +1,11 @@
+#!/bin/bash
+source ~/.bash_profile
+
+echo "refreshing project"
+
+cp ~/PycharmProjects/automated_reprocessing/prod.py ~/production/testing/reproc-env/prod.py
+cp ~/PycharmProjects/automated_reprocessing/io_methods.py ~/production/testing/reproc-env/io_methods.py
+chmod 766 ~/production/testing/reproc-env/prod.py
+ls -l ~/production/testing/reproc-env/
+
+echo "refresh done"
