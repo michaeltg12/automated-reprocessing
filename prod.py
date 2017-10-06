@@ -1,5 +1,26 @@
 #!/Users/ofg/anaconda3/bin/python
 
+""" ********** module  name **********
+
+Author: Michael Giansiracusa
+Email: giansiracumt@ornl.gov
+
+Purpose:
+
+Note:
+
+Classes:
+
+Methods:
+
+Example:
+
+Attributes:
+
+Todo:
+
+"""
+
 from sympy import sympify, symbol
 from matplotlib import pyplot as plt
 import io_methods
