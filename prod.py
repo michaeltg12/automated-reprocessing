@@ -22,7 +22,6 @@ Todo:
 """
 
 from sympy import sympify, symbol
-from matplotlib import pyplot as plt
 import io_methods
 import argparse
 import logging
