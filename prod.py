@@ -1,11 +1,12 @@
 #!/Users/ofg/anaconda3/bin/python
 
-""" ********** module  name **********
+""" ********** reprocessing_netcdf_by_symbolic_equation **********
 
 Author: Michael Giansiracusa
 Email: giansiracumt@ornl.gov
 
-Purpose:
+Purpose: 
+    This tool will query 
 
 Note:
 
@@ -29,6 +30,38 @@ import netCDF4
 import time
 import os
 import re
+
+###########################################
+import reprocessing_by_dqr
+
+# try importing armlib
+try:
+    import armlib
+except ImportError:
+    armlib = os.path.join('/apps', 'adc', 'lib')
+    if not os.path.isdir(armlib):
+        assert False, 'cannot find armlib'
+    sys.path.insert(0, armlib)
+
+from armlib.config import load_config
+
+logger = logging.getLogger('root.reprocessing')
+
+def get_dqr():
+    postgres_config = reprocessing_by_dqr.do_setup()
+    reprocessing_dqr = reprocessing_by_dqr.ReprocessingDQR(postgres_config)
+    reprocessing_dqr.find_time_period()
+    reprocessing_dqr.find_affected_ds()
+    reprocessing_dqr.find_affected_files()
+    reprocessing_dqr.find_equation()
+    return reprocessing_dqr
+
+
+equation_string = dqr.find_equ()
+time_period = dqr.find_time_period()
+
+
+############################################
 
 module_path = os.path.dirname(os.path.realpath(__file__))
 logging.basicConfig(level=logging.DEBUG)
@@ -277,12 +310,14 @@ def do_reprocessing(verified_file, args, io_manager):
 
 if __name__ == '__main__':
 
-    args = get_args()
-    verified_file = verify_file(args)
+    #args = get_args()
+    #verified_file = verify_file(args)
 
-    input_dir = module_path + '/input/'
-    output_dir =module_path + '/output/'
+    #input_dir = module_path + '/input/'
+    #output_dir =module_path + '/output/'
     logger.debug('\n\tin: %s\n\tout: %s' %(input_dir, output_dir))
-    io_manager = io_methods.IOMethods(input_dir, output_dir, logging.DEBUG)
 
-    do_reprocessing(verified_file, args, io_manager)
+    io_manager = io_methods.IOMethods(input_dir, output_dir, logging.DEBUG)
+    dqr = get_dqr()
+
+    do_reprocessing(dqr.affected_files, dqr.equation, io_manager)
